@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Engineering Portfolio</title>
+
+<!-- Link preview / social share metadata -->
+<meta property="og:title" content="Azeem Husain — Mechanical Design Portfolio">
+<meta property="og:description" content="Mechanical design engineer at Honda. Baja SAE, combat robotics, and a decade of self-directed hardware projects.">
+<meta property="og:image" content="https://azeem-husain.github.io/portfolio/images/baja-driver-seated.jpg">
+<meta property="og:url" content="https://azeem-husain.github.io/portfolio/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Azeem Husain — Mechanical Design Portfolio">
+<meta name="twitter:description" content="Mechanical design engineer at Honda. Baja SAE, combat robotics, and a decade of self-directed hardware projects.">
+<meta name="twitter:image" content="https://azeem-husain.github.io/portfolio/images/baja-driver-seated.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #17181A;
+    --bg-panel: #1E2023;
+    --bg-panel-raised: #26282B;
+    --line: #35373B;
+    --line-bright: #4C4F55;
+    --text: #ECEDEE;
+    --text-dim: #8F929A;
+    --accent: #6C90F5;
+    --accent-dim: #333E63;
+    --caution: #A67EE8;
+    --ok: #7FBFA0;
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-body: 'IBM Plex Sans', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size: 64px 64px;
+    background-position: -1px -1px;
+    background-attachment: fixed;
+    color: var(--text);
+    font-family: var(--font-body);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+  }
+
+  a { color: inherit; }
+  ::selection { background: var(--accent); color: #17181A; }
+
+  .wrap { max-width: 980px; margin: 0 auto; padding: 0 28px; }
+
+  /* ---------- ANODIZE RULE (titanium-gradient divider) ---------- */
+  .hazard-rule {
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent-dim), var(--accent), var(--caution), var(--accent-dim));
+    opacity: 0.9;
+  }
+
+  /* ---------- NAV ---------- */
+  nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(30,28,25,0.92);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--line);
+  }
+  nav .wrap {
+    display: flex; align-items: center; justify-content: space-between;
+    height: 56px;
+  }
+  .nav-mark {
+    font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.08em;
+    color: var(--accent); font-weight: 600;
+  }
+  .nav-links { display: flex; gap: 22px; list-style: none; overflow-x: auto; scrollbar-width: none; }
+  .nav-links::-webkit-scrollbar { display: none; }
+  .nav-links a { white-space: nowrap; }
+  .nav-links a {
+    font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.05em;
+    text-decoration: none; color: var(--text-dim);
+    text-transform: uppercase; transition: color 0.15s;
+  }
+  .nav-links a:hover, .nav-links a:focus-visible { color: var(--accent); outline: none; }
+
+  /* ---------- HERO / TITLE BLOCK ---------- */
+  header.hero { padding: 64px 0 0; }
+  .titleblock {
+    border: 1.5px solid var(--line-bright);
+    background: var(--bg-panel);
+  }
+  .titleblock-top {
+    padding: 40px 36px 32px;
+    border-bottom: 1.5px solid var(--line-bright);
+  }
+  .eyebrow {
+    font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.18em;
+    color: var(--accent); text-transform: uppercase; margin-bottom: 14px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .eyebrow::before {
+    content: ''; width: 8px; height: 8px; background: var(--accent);
+    display: inline-block;
+  }
+  h1.name {
+    font-family: var(--font-display); font-weight: 700;
+    font-size: clamp(36px, 6vw, 58px); line-height: 1.02; letter-spacing: -0.01em;
+  }
+  .role {
+    font-family: var(--font-mono); font-size: 15px; color: var(--text-dim);
+    margin-top: 12px;
+  }
+  .role .fill { color: var(--caution); }
+  .hero-statement {
+    font-size: 17px; color: var(--text); max-width: 620px; margin-top: 22px;
+  }
+  .titleblock-fields {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+  }
+  .field {
+    padding: 16px 18px;
+    border-right: 1px solid var(--line);
+    font-family: var(--font-mono); font-size: 12px;
+  }
+  .field:last-child { border-right: none; }
+  .field .label {
+    color: var(--text-dim); letter-spacing: 0.08em; text-transform: uppercase;
+    font-size: 10px; margin-bottom: 6px;
+  }
+  .field .value { color: var(--text); font-size: 13px; }
+  .field .value.fill { color: var(--caution); }
+  @media (max-width: 700px) {
+    .titleblock-fields { grid-template-columns: repeat(2, 1fr); }
+    .field:nth-child(2) { border-right: none; }
+  }
+
+  /* ---------- SECTIONS ---------- */
+  section { padding: 88px 0; border-bottom: 1px solid var(--line); }
+  section:last-of-type { border-bottom: none; }
+
+  .section-head { margin-bottom: 44px; display: flex; align-items: baseline; gap: 16px; }
+  .section-num {
+    font-family: var(--font-mono); font-size: 13px; color: var(--accent);
+    border: 1px solid var(--accent-dim); padding: 3px 8px;
+  }
+  h2.section-title {
+    font-family: var(--font-display); font-weight: 600;
+    font-size: clamp(26px, 4vw, 36px); letter-spacing: -0.01em;
+  }
+  .section-sub {
+    font-family: var(--font-mono); font-size: 12.5px; color: var(--text-dim);
+    margin-top: -30px; margin-bottom: 40px; max-width: 640px; line-height: 1.7;
+  }
+
+  .lede { font-size: 16.5px; max-width: 680px; color: var(--text); margin-bottom: 36px; }
+  .lede strong { color: var(--caution); font-weight: 600; }
+
+  /* ---------- EXPERIENCE ---------- */
+  .exp-card {
+    border: 1.5px solid var(--line-bright); background: var(--bg-panel);
+    padding: 26px 28px; margin-bottom: 16px;
+  }
+  .exp-head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    flex-wrap: wrap; gap: 8px; margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 14px;
+  }
+  .exp-role { font-family: var(--font-display); font-size: 18px; font-weight: 600; }
+  .exp-org { font-family: var(--font-mono); font-size: 12.5px; color: var(--accent); margin-top: 4px; }
+  .exp-dates { font-family: var(--font-mono); font-size: 11.5px; color: var(--text-dim); white-space: nowrap; }
+  .exp-card ul { list-style: none; }
+  .exp-card li {
+    font-size: 14px; padding-left: 16px; position: relative; margin-bottom: 9px; color: var(--text);
+  }
+  .exp-card li::before { content: '—'; position: absolute; left: 0; color: var(--text-dim); }
+
+  /* ---------- SKILLS ---------- */
+  .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+  @media (max-width: 700px) { .skills-grid { grid-template-columns: 1fr; } }
+  .skills-card { background: var(--bg-panel); padding: 24px 26px; }
+  .skills-card h3 {
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 16px;
+  }
+  .skills-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+  .skill-pill {
+    font-family: var(--font-mono); font-size: 12px; color: var(--text);
+    border: 1px solid var(--line-bright); padding: 5px 11px; background: var(--bg);
+  }
+
+  /* ---------- EDUCATION ---------- */
+  .edu-card {
+    border: 1.5px solid var(--line-bright); background: var(--bg-panel); padding: 28px 32px;
+  }
+  .edu-school { font-family: var(--font-display); font-size: 19px; font-weight: 600; }
+  .edu-degree { font-family: var(--font-mono); font-size: 13px; color: var(--accent); margin-top: 6px; }
+  .edu-date { font-family: var(--font-mono); font-size: 11.5px; color: var(--text-dim); margin-top: 6px; }
+  .edu-card ul { list-style: none; margin-top: 16px; }
+  .edu-card li {
+    font-size: 14px; padding-left: 16px; position: relative; margin-bottom: 8px; color: var(--text);
+  }
+  .edu-card li::before { content: '—'; position: absolute; left: 0; color: var(--text-dim); }
+  .cert-row {
+    margin-top: 18px; padding-top: 18px; border-top: 1px solid var(--line);
+    font-family: var(--font-mono); font-size: 12.5px; color: var(--text-dim);
+  }
+  .cert-row strong { color: var(--text); font-weight: 500; }
+
+  /* ---------- SPEC GRID (role/tools/outcome cards) ---------- */
+  .spec-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px;
+    background: var(--line); border: 1px solid var(--line); margin-bottom: 8px;
+  }
+  @media (max-width: 700px) { .spec-grid { grid-template-columns: 1fr; } }
+  .spec-card { background: var(--bg-panel); padding: 26px 28px; }
+  .spec-card h3 {
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 14px;
+  }
+  .spec-card ul { list-style: none; }
+  .spec-card li {
+    font-size: 14.5px; padding-left: 16px; position: relative; margin-bottom: 10px;
+    color: var(--text);
+  }
+  .spec-card li::before {
+    content: '—'; position: absolute; left: 0; color: var(--text-dim);
+  }
+  .spec-card p { font-size: 14.5px; color: var(--text); }
+  .outcome-card { background: var(--bg-panel-raised); }
+  .outcome-card h3 { color: var(--ok); }
+
+  /* ---------- PHOTO PLACEHOLDER ---------- */
+  .photo-slot {
+    aspect-ratio: 4/3;
+    background:
+      repeating-linear-gradient(45deg, var(--bg-panel-raised), var(--bg-panel-raised) 8px, var(--bg-panel) 8px, var(--bg-panel) 16px);
+    border: 1px dashed var(--line-bright);
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column; gap: 6px; text-align: center; padding: 16px;
+  }
+  .photo-slot .tag {
+    font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em;
+    color: var(--caution); text-transform: uppercase; border: 1px solid var(--caution);
+    padding: 3px 8px;
+  }
+  .photo-slot .cap { font-family: var(--font-mono); font-size: 11px; color: var(--text-dim); }
+
+  /* ---------- REVISION BLOCK (signature element) ---------- */
+  .revblock { border: 1.5px solid var(--line-bright); margin: 20px 0 48px; }
+  .revblock-head {
+    display: grid; grid-template-columns: 60px 120px 1fr 1fr;
+    font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--bg); background: var(--caution);
+  }
+  .revblock-head div { padding: 8px 14px; }
+  .revrow {
+    display: grid; grid-template-columns: 60px 120px 1fr 1fr;
+    border-top: 1px solid var(--line);
+  }
+  .revrow:nth-child(even) { background: var(--bg-panel); }
+  .revrow .rev-id {
+    font-family: var(--font-mono); font-weight: 600; color: var(--accent);
+    padding: 16px 10px; font-size: 12.5px; border-right: 1px solid var(--line);
+    display: flex; align-items: flex-start;
+  }
+  .revrow .rev-name {
+    font-family: var(--font-display); font-weight: 600; color: var(--text);
+    padding: 16px 14px; font-size: 14px; border-right: 1px solid var(--line);
+    display: flex; align-items: flex-start;
+  }
+  .revrow .rev-name .tbd { font-family: var(--font-mono); font-size: 11px; color: var(--caution); font-weight: 400; }
+  .revrow .rev-change, .revrow .rev-why { padding: 16px 14px; font-size: 13.5px; }
+  .revrow .rev-change { border-right: 1px solid var(--line); }
+  .revrow .rev-why { color: var(--text-dim); }
+  @media (max-width: 700px) {
+    .revblock-head, .revrow { grid-template-columns: 46px 90px 1fr; }
+    .revblock-head div:nth-child(4), .revrow .rev-why { display: none; }
+  }
+
+  /* ---------- PHOTO STRIP (per-robot build photos) ---------- */
+  .photo-strip-wrap {
+    background: var(--bg-panel); border: 1px solid var(--line);
+    border-top: none; padding: 20px 14px 24px; margin-top: -1px;
+  }
+  .photo-strip-label {
+    font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--caution); margin-bottom: 14px; padding: 0 8px;
+  }
+  .photo-strip {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; padding: 0 8px;
+  }
+  @media (max-width: 700px) { .photo-strip { grid-template-columns: 1fr; } }
+  .photo-strip figure {
+    border: 1px dashed var(--line-bright); padding: 6px; background: var(--bg);
+  }
+  .photo-strip img {
+    width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block;
+  }
+  .photo-strip figcaption {
+    font-family: var(--font-mono); font-size: 10.5px; color: var(--text-dim);
+    padding: 8px 4px 2px; line-height: 1.4;
+  }
+
+  /* ---------- VERSION CARD (image + text, single photo per entry) ---------- */
+  .version-card {
+    display: flex; border: 1.5px solid var(--line-bright); margin-bottom: 18px;
+    background: var(--bg-panel); overflow: hidden;
+  }
+  .version-card-photo {
+    flex: 0 0 40%; display: flex; align-items: center; justify-content: center;
+    padding: 14px; border-right: 1px solid var(--line); background: var(--bg);
+  }
+  .version-card-photo img {
+    width: 100%; height: auto; max-height: 340px; object-fit: contain; display: block;
+    cursor: zoom-in;
+  }
+  .version-card-body { flex: 1; padding: 24px 28px; }
+  .version-card-id {
+    font-family: var(--font-mono); font-weight: 600; color: var(--accent); font-size: 13px;
+    border: 1px solid var(--accent-dim); padding: 2px 10px; display: inline-block; margin-bottom: 14px;
+  }
+  .version-card-change { font-size: 14px; margin-bottom: 12px; color: var(--text); }
+  .version-card-why { font-size: 13px; color: var(--text-dim); }
+  .version-card-why strong { color: var(--text-dim); font-weight: 600; }
+  @media (max-width: 700px) {
+    .version-card { flex-direction: column; }
+    .version-card-photo { border-right: none; border-bottom: 1px solid var(--line); flex-basis: auto; }
+  }
+
+  /* ---------- QUICK GALLERY ---------- */
+  .gallery-label {
+    font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--text-dim); margin: 8px 0 20px;
+    padding-top: 24px; border-top: 1px solid var(--line);
+  }
+  .gallery-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px;
+  }
+  @media (max-width: 900px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
+  .gallery-item .photo-slot { aspect-ratio: 1/1; margin-bottom: 10px; }
+  .gallery-item h4 {
+    font-family: var(--font-display); font-size: 15px; font-weight: 600; margin-bottom: 4px;
+  }
+  .gallery-item p { font-size: 12.5px; color: var(--text-dim); line-height: 1.5; }
+
+  /* ---------- MISC PROJECT GRID ---------- */
+  .misc-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+    background: var(--line); border: 1px solid var(--line);
+  }
+  @media (max-width: 800px) { .misc-grid { grid-template-columns: 1fr; } }
+  .misc-card { background: var(--bg-panel); padding: 24px; }
+  .misc-card .tag-row { display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
+  .misc-card .pill {
+    font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.05em;
+    text-transform: uppercase; color: var(--text-dim); border: 1px solid var(--line-bright);
+    padding: 2px 8px;
+  }
+  .misc-card h4 { font-family: var(--font-display); font-size: 17px; margin-bottom: 8px; }
+  .misc-card p { font-size: 13.5px; color: var(--text-dim); }
+  .misc-card.pending { opacity: 0.6; border: 1px dashed var(--line-bright); background: transparent; }
+
+  footer {
+    padding: 60px 0 80px; text-align: center;
+  }
+  footer .name { font-family: var(--font-display); font-weight: 600; font-size: 20px; margin-bottom: 10px; }
+  footer .contact { font-family: var(--font-mono); font-size: 13px; color: var(--caution); }
+  footer .note { font-family: var(--font-mono); font-size: 11px; color: var(--text-dim); margin-top: 18px; }
+  /* ---------- LIGHTBOX ---------- */
+  .lightbox {
+    position: fixed; inset: 0; background: rgba(10,11,13,0.94);
+    display: none; align-items: center; justify-content: center;
+    z-index: 999; padding: 40px; cursor: zoom-out;
+  }
+  .lightbox.active { display: flex; }
+  .lightbox img {
+    max-width: 92vw; max-height: 92vh; object-fit: contain;
+    box-shadow: 0 24px 70px rgba(0,0,0,0.6); border: 1px solid var(--line-bright);
+  }
+  .lightbox-close {
+    position: absolute; top: 24px; right: 32px; font-family: var(--font-mono);
+    font-size: 13px; color: var(--text-dim); border: 1px solid var(--line-bright);
+    padding: 6px 12px; letter-spacing: 0.05em; text-transform: uppercase;
+  }
+  .photo-strip img, .gallery-item img, .version-card-photo img { cursor: zoom-in; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="nav-mark">PORTFOLIO // REV 2026</div>
+    <ul class="nav-links">
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#baja">Baja SAE</a></li>
+      <li><a href="#combat">Combat Robotics</a></li>
+      <li><a href="#hovercraft">RC Hovercraft</a></li>
+      <li><a href="#more">More</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="Azeem_Husain_Resume.pdf" style="color: var(--accent);" target="_blank">Résumé ↓</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="titleblock">
+      <div class="titleblock-top">
+        <div class="eyebrow">Mechanical &amp; Hardware Engineering</div>
+        <h1 class="name">Azeem Husain</h1>
+        <div class="role">Target role: <span class="fill">Mechanical Design Engineer</span> <span style="color:var(--text-dim); font-weight:400;">(open to Mechanical Design, R&amp;D, Product Development, Hardware Engineering &amp; Mechatronics roles)</span></div>
+        <p class="hero-statement">
+          Over a decade of hands-on hardware projects gave me an engineering instinct long
+          before I had the job title. Now I bring that same instinct to work as a mechanical
+          design engineer at Honda, developing exterior lighting assemblies for future Honda
+          and Acura vehicles. Open to new opportunities that put both my skills and my passion
+          for hands-on engineering to work.
+        </p>
+      </div>
+      <div class="titleblock-fields">
+        <div class="field"><div class="label">Email</div><div class="value">azeem.husain@hotmail.com</div></div>
+        <div class="field"><div class="label">Phone</div><div class="value">615-838-2817</div></div>
+        <div class="field"><div class="label">Location</div><div class="value">Open to relocation</div></div>
+        <div class="field"><div class="label">Links</div><div class="value"><a href="https://www.linkedin.com/in/azeem-husain-5a4014206" style="color:var(--accent); text-decoration:none;">linkedin.com/in/azeem-husain</a></div></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="hazard-rule"></div>
+
+<!-- ============ EXPERIENCE ============ -->
+<section id="experience">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-num">01</span>
+      <h2 class="section-title">Experience</h2>
+    </div>
+    <div class="section-sub">PROFESSIONAL ENGINEERING ROLES</div>
+
+    <div style="font-family: var(--font-mono); font-size: 12.5px; color: var(--text-dim); margin-bottom: 28px;">
+      Full details, metrics, and history — <a href="Azeem_Husain_Resume.pdf" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-dim);">see my résumé ↓</a>
+    </div>
+
+    <div class="exp-card">
+      <div class="exp-head">
+        <div>
+          <div class="exp-role">Mechanical Design Engineer</div>
+          <div class="exp-org">Honda — Raymond, OH</div>
+        </div>
+        <div class="exp-dates">Aug 2023 – Present</div>
+      </div>
+      <p style="font-size:14px; color:var(--text-dim);">Developing exterior lighting assemblies for future Honda and Acura vehicles — CAD, DFM/DFA, validation testing, and competitor benchmarking.</p>
+    </div>
+
+    <div class="exp-card">
+      <div class="exp-head">
+        <div>
+          <div class="exp-role">Fluid Dynamics Lab Research Assistant</div>
+          <div class="exp-org">University of Tennessee — Knoxville, TN</div>
+        </div>
+        <div class="exp-dates">Aug 2022 – Dec 2022</div>
+      </div>
+      <p style="font-size:14px; color:var(--text-dim);">Designed precision test fixtures and ran data analysis for fluid dynamics research, co-authoring a paper published in <em>Physics of Fluids</em>.</p>
+    </div>
+
+    <div class="exp-card">
+      <div class="exp-head">
+        <div>
+          <div class="exp-role">Process Engineering Co-op</div>
+          <div class="exp-org">DENSO — Maryville, TN</div>
+        </div>
+        <div class="exp-dates">May 2022 – Aug 2022</div>
+      </div>
+      <p style="font-size:14px; color:var(--text-dim);">Designed production equipment countermeasures for Engine ECU production lines and supported the launch of a fully automated production line.</p>
+    </div>
+  </div>
+</section>
+
+<div class="hazard-rule"></div>
+
+<!-- ============ SKILLS ============ -->
+<section id="skills">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-num">02</span>
+      <h2 class="section-title">Skills</h2>
+    </div>
+    <div class="section-sub">TOOLS &amp; TECHNICAL CAPABILITIES</div>
+
+    <div class="skills-grid">
+      <div class="skills-card">
+        <h3>CAD</h3>
+        <div class="skills-pills">
+          <span class="skill-pill">SolidWorks</span>
+          <span class="skill-pill">CATIA V5</span>
+          <span class="skill-pill">CATIA V6 (3DEXPERIENCE)</span>
+          <span class="skill-pill">Onshape</span>
+          <span class="skill-pill">Fusion 360</span>
+          <span class="skill-pill">AutoCAD</span>
+          <span class="skill-pill">SketchUp</span>
+          <span class="skill-pill">Blender</span>
+        </div>
+      </div>
+      <div class="skills-card">
+        <h3>Analysis</h3>
+        <div class="skills-pills">
+          <span class="skill-pill">MATLAB</span>
+          <span class="skill-pill">SolidWorks FEA</span>
+          <span class="skill-pill">CATIA FEA</span>
+          <span class="skill-pill">Ansys Speos</span>
+          <span class="skill-pill">Excel VBA</span>
+        </div>
+      </div>
+      <div class="skills-card">
+        <h3>Fabrication &amp; Prototyping</h3>
+        <div class="skills-pills">
+          <span class="skill-pill">3D Printing</span>
+          <span class="skill-pill">CNC Machining</span>
+          <span class="skill-pill">Metal Fabrication &amp; Welding</span>
+          <span class="skill-pill">Sheet Metal Fabrication</span>
+          <span class="skill-pill">Injection-Molded Plastics</span>
+          <span class="skill-pill">Circuits</span>
+          <span class="skill-pill">Arduino &amp; Raspberry Pi Programming</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="hazard-rule"></div>
+
+<!-- ============ BAJA SAE ============ -->
+<section id="baja">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-num">03</span>
+      <h2 class="section-title">Baja SAE Senior Design</h2>
+    </div>
+    <div class="section-sub">FOUNDING MEMBER · DRIVETRAIN LEAD</div>
+
+    <p class="lede">
+      Founding member of our university's first collegiate Baja SAE team. With no prior team
+      history, existing designs, or institutional knowledge to build on, the first year centered
+      on establishing a baseline vehicle from scratch — researching SAE rules, benchmarking
+      established programs, and making foundational architecture decisions with
+      <strong>no precedent to lean on</strong>. One of two team members who drove the car at competition.
+    </p>
+
+    <div class="spec-grid">
+      <div class="spec-card">
+        <h3>My Role</h3>
+        <ul>
+          <li>Selected drivetrain components — CVT and axles — based on the competition's fixed engine output and off-road torque/handling requirements</li>
+          <li>Modeled the full drivetrain layout in SolidWorks within chassis packaging constraints set by the frame subteam</li>
+          <li>Designed mounting structures and brackets for drivetrain components, accounting for vibration and shock loads from off-road terrain</li>
+          <li>Fabricated chassis components: cut metal plate and tubing, welded the frame, CNC-milled mounting brackets</li>
+          <li>One of two team drivers who competed in the vehicle</li>
+        </ul>
+      </div>
+      <div class="spec-card outcome-card">
+        <h3>Outcome</h3>
+        <p>
+          As a first-year program with no existing baseline, competing at all was a stretch goal.
+          The team designed, built, and fielded a complete vehicle that competed and ran under
+          its own power. Reliability issues surfaced during competition — a common outcome for a
+          first-year vehicle from an entirely new team — providing a concrete baseline and a set
+          of lessons for the following year's team.
+        </p>
+      </div>
+    </div>
+
+    <div class="gallery-label" style="border-top:none; padding-top:0;">Build Progression</div>
+    <div class="photo-strip-wrap" style="border-top: 1px solid var(--line);">
+      <div class="photo-strip">
+        <figure>
+          <img src="images/baja-frame-near-complete.jpg" alt="Baja SAE tubular frame nearly welded together in the shop">
+          <figcaption>Tubular frame nearing completion, welded in the shop</figcaption>
+        </figure>
+        <figure>
+          <img src="images/baja-frame-seat-motor.jpg" alt="Baja SAE frame fully welded with seat installed and engine mounted">
+          <figcaption>Frame fully welded, seat installed, engine mounted in place</figcaption>
+        </figure>
+        <figure>
+          <img src="images/baja-suspension-partial.jpg" alt="Baja SAE car with some suspension components installed">
+          <figcaption>Car further assembled with some of the suspension now installed</figcaption>
+        </figure>
+        <figure>
+          <img src="images/baja-steering-test-fit.jpg" alt="Team members test-fitting the driver position to place the steering wheel and column">
+          <figcaption>Test-fitting the driver position to figure out steering wheel and column placement</figcaption>
+        </figure>
+        <figure>
+          <img src="images/baja-near-final-assembly.jpg" alt="Baja SAE car nearly complete with full suspension, firewall, CV axles, and steering column installed">
+          <figcaption>Nearly complete — full suspension, firewall, CV axles, steering column, and most of the drivetrain installed</figcaption>
+        </figure>
+        <figure>
+          <img src="images/baja-drivetrain-detail.png" alt="Detail shot of the Baja SAE drivetrain, engine, CVT, and chain drive to the rear axle">
+          <figcaption>Drivetrain detail — engine, CVT, and chain drive to the rear axle</figcaption>
+        </figure>
+        <figure>
+          <img src="images/baja-finished-competition.jpg" alt="Completed Baja SAE car at competition">
+          <figcaption>The completed car at competition</figcaption>
+        </figure>
+        <figure>
+          <img src="images/baja-driver-seated.jpg" alt="Driver seated in the completed Baja SAE car">
+          <figcaption>Behind the wheel — one of two team drivers who competed in the car</figcaption>
+        </figure>
+        <figure>
+          <img src="images/baja-team-photo.jpg" alt="Full Baja SAE team photo with the finished car at competition">
+          <figcaption>The full team with the finished car at competition</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMBAT ROBOTICS ============ -->
+<section id="combat">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-num">04</span>
+      <h2 class="section-title">Combat Robotics — BattleBots</h2>
+    </div>
+
+    <p class="lede">
+      Designed, built, and competed with robots primarily across three weight classes —
+      <strong>150g to 3lb</strong> — plus one-off builds in other classes.
+      Fairyweight ranked top 3 nationally, antweight ranked top 50 nationally, beetleweight ranked top 30 nationally. The antweight
+      class saw the most iteration: six generations across two lineages, each one built to fix a
+      specific failure from the last.
+    </p>
+
+    <div class="gallery-label">Featured — Antweight Evolution (1lb class)</div>
+
+    <div class="revblock">
+      <div class="revblock-head">
+        <div>Rev</div><div>Name</div><div>Change</div><div>Why</div>
+      </div>
+      <div class="revrow">
+        <div class="rev-id">1.0</div>
+        <div class="rev-name">Predator</div>
+        <div class="rev-change">3D-printed ABS chassis, designed in Google SketchUp — a wedge shape with a horizontal spinner mounted on top. Sheet-steel wedge shell hand-laid out on grid paper, cut with tin snips, bent to shape. Horizontal spinner: brushless motor with a bolt through the center as the striking implement. 850mAh 2S LiPo, micro geared brushed drive motors, Sabertooth ESC, plastic/rubber wheels.</div>
+        <div class="rev-why">First build — established a working baseline and got me into the hobby.</div>
+      </div>
+      <div class="photo-strip-wrap">
+        <div class="photo-strip-label">Build photos — Rev 1.0</div>
+        <div class="photo-strip">
+          <figure>
+            <img src="images/ant1-top-final.jpg" alt="Ant 1.0 finished robot, top view showing sheet steel wedge and spinner motor">
+            <figcaption>Finished robot — sheet-steel wedge shell up top</figcaption>
+          </figure>
+          <figure>
+            <img src="images/ant1-3dprinting.jpg" alt="Ant 1.0 body being 3D printed on a MakerFarm printer">
+            <figcaption>Chassis being 3D printed with ABS</figcaption>
+          </figure>
+          <figure>
+            <img src="images/ant1-electronics-wired.jpg" alt="Ant 1.0 electronics bay fully wired, LiPo battery, ESC, and receiver">
+            <figcaption>All electronics installed into the chassis, with foam to fill in empty space</figcaption>
+          </figure>
+        </div>
+      </div>
+      <div class="revrow">
+        <div class="rev-id">2.0</div>
+        <div class="rev-name">Phantom <span class="tbd">v1</span></div>
+        <div class="rev-change">Chassis switched to CNC-routed Lexan (2D profile designed in Inkscape). Hard plastic wheels with rubber tires. Custom spinner blade designed and prototyped in plastic, but milling it from metal ran into a manufacturability wall — the CNC mill being used didn't have the tooling to cut it reliably — so the design pivoted to a repurposed angle-grinder cutoff disk. Sheet-metal side shields added.</div>
+        <div class="rev-why">V1's spinner did negligible damage; wanted a more effective weapon.</div>
+      </div>
+      <div class="photo-strip-wrap">
+        <div class="photo-strip-label">Build photos — Rev 2.0, Phantom v1</div>
+        <div class="photo-strip">
+          <figure>
+            <img src="images/phantom-v1-weighed.jpg" alt="Phantom v1 finished robot on a gram scale">
+            <figcaption>Finished robot — CNC-cut Lexan chassis, brushless weapon motor, wheels visible through the clear body</figcaption>
+          </figure>
+          <figure>
+            <img src="images/phantom-v1-electronics.jpg" alt="Phantom v1 prototype spinner blade alongside the assembled chassis">
+            <figcaption>The prototype spinner blade, cut in plastic before the manufacturability issue with milling it in metal came up</figcaption>
+          </figure>
+          <figure>
+            <img src="images/phantom-v1-lexan-stock.jpg" alt="Cut Lexan chassis piece">
+            <figcaption>CNC-cut Lexan chassis piece</figcaption>
+          </figure>
+        </div>
+      </div>
+      <div class="revrow">
+        <div class="rev-id">2.1</div>
+        <div class="rev-name">Phantom <span class="tbd">v2</span></div>
+        <div class="rev-change">Grinding disk replaced with a modified 6-tooth saw blade (3 teeth removed) for more mass and damage output.</div>
+        <div class="rev-why">Grinding disk survived hits but wasn't damaging opponents.</div>
+      </div>
+      <div class="photo-strip-wrap">
+        <div class="photo-strip-label">Build photos — Rev 2.1, Phantom v2</div>
+        <div class="photo-strip">
+          <figure>
+            <img src="images/phantom-v2-top.jpg" alt="Phantom v2 finished robot, top view with new paint job and Vision Labs lettering">
+            <figcaption>Finished robot after the repaint — chassis lettering reads "Vision Labs"</figcaption>
+          </figure>
+          <figure>
+            <img src="images/phantom-v2-blade.jpg" alt="Phantom v2 modified 6-tooth saw blade weapon mounted on the side of the robot">
+            <figcaption>The modified 6-tooth saw blade weapon (3 teeth removed)</figcaption>
+          </figure>
+          <figure>
+            <img src="images/phantom-v2-weapon-test.jpg" alt="Weapon test using a toy RC car weighted with bolts to 1lb as a stand-in opponent">
+            <figcaption>Weapon test rig — a toy RC car weighted with bolts to 1lb, used as a disposable stand-in opponent</figcaption>
+          </figure>
+        </div>
+      </div>
+      <div class="revrow">
+        <div class="rev-id">2.2</div>
+        <div class="rev-name">Phantom <span class="tbd">v3</span></div>
+        <div class="rev-change">Chassis reshaped from boxy to curved to avoid getting stuck flipped on its side. Compact electronics packaging, corrected front-heavy weight balance to even front-to-back distribution. Slimmer body increased the weapon's exposed impact area.</div>
+        <div class="rev-why">Implemented a more impactful weapon, adjusted weight balance for better handling, and slimmed the overall chassis profile for more optimized weapon exposure.</div>
+      </div>
+      <div class="photo-strip-wrap">
+        <div class="photo-strip-label">Build photos — Rev 2.2, Phantom v3</div>
+        <div class="photo-strip">
+          <figure>
+            <img src="images/phantom-v3-chassis-predecoration.jpg" alt="Phantom v3 chassis and electronics before final paint and decoration">
+            <figcaption>Chassis and electronics laid out shortly before final paint/decoration</figcaption>
+          </figure>
+          <figure>
+            <img src="images/phantom-v3-makercam.jpg" alt="MakerCam software showing the curved chassis toolpath for Phantom v3">
+            <figcaption>Toolpaths generated in MakerCam — the rounded profile designed to avoid getting stuck flipped on its side</figcaption>
+          </figure>
+          <figure>
+            <img src="images/phantom-v3-cnc-closeup.jpg" alt="Close-up of the CNC router cutting the Lexan chassis panel">
+            <figcaption>CNC router mid-cut on the Lexan chassis panel</figcaption>
+          </figure>
+        </div>
+      </div>
+      <div class="revrow">
+        <div class="rev-id">3.0</div>
+        <div class="rev-name">Passive Aggressive <span class="tbd">v1</span></div>
+        <div class="rev-change">Switched to a vertical drum spinner — aluminum drum with steel-screw teeth, brushless motor casing integrated directly into the drum with a much thicker shaft. UHMW chassis designed in Fusion 360 and machined with a CNC router — first use of 3D CAM toolpaths for a unibody part, versus flat 2D profiles. Replaced hard plastic wheels with custom foam wheels coated in liquid rubber. Battery downsized and optimized for precise match length with a safety margin, allowing weight reallocation to the weapon. Removable front forks or a thin steel wedge guide low opponents into the drum.</div>
+        <div class="rev-why">Two failures drove this redesign: repeated horizontal-spinner shaft shearing, and hits sending both robots flying with no control. An upward-spinning vertical drum redirects impact force downward, preserving control after a hit.</div>
+      </div>
+      <div class="photo-strip-wrap">
+        <div class="photo-strip-label">Build photos — Rev 3.0, Passive Aggressive v1</div>
+        <div class="photo-strip">
+          <figure>
+            <img src="images/pa-v1-wedge-config.jpg" alt="Passive Aggressive v1 with the removable steel wedge attachment, aluminum drum weapon visible">
+            <figcaption>Wedge configuration — aluminum drum weapon with steel-screw teeth visible. Typically used against opponents with active spinner weapons.</figcaption>
+          </figure>
+          <figure>
+            <img src="images/pa-v1-fork-config.jpg" alt="Passive Aggressive v1 with the removable steel fork attachment">
+            <figcaption>Fork configuration — the same modular front mount, swapped for guiding low opponents into the drum. Used against more passive robots like wedges.</figcaption>
+          </figure>
+          <figure>
+            <img src="images/pa-v1-fusion360-cad.jpg" alt="Fusion 360 CAD model of the Passive Aggressive v1 unibody chassis">
+            <figcaption>Fusion 360 CAD model of the UHMW unibody chassis</figcaption>
+          </figure>
+        </div>
+      </div>
+      <div class="revrow">
+        <div class="rev-id">3.1</div>
+        <div class="rev-name">Passive Aggressive <span class="tbd">v2</span></div>
+        <div class="rev-change"><strong style="color:var(--text)">Final antweight.</strong> Fully modeled in Fusion 360 — weapon, wedge, and top cover all designed in 3D. UHMW unibody extended to integrate the bottom cover into itself; walls cored out to cut weight, edges rounded for a cleaner profile. Steel wedge replaced with titanium.</div>
+        <div class="rev-why">Direct fix for the steel wedge's tendency to bend on impact — titanium let the plate be made thicker and more durable without adding much additional weight. Full 3D modeling let the whole robot be optimized virtually before any material was cut.</div>
+      </div>
+      <div class="photo-strip-wrap">
+        <div class="photo-strip-label">Build photos — Rev 3.1, Passive Aggressive v2 (final antweight)</div>
+        <div class="photo-strip">
+          <figure>
+            <img src="images/pa-v2-cad-mobile-view.png" alt="Mobile CAD viewer render of the fully assembled Passive Aggressive robot">
+            <figcaption>Fully assembled CAD model</figcaption>
+          </figure>
+          <figure>
+            <img src="images/pa-v2-finished-wedge.jpg" alt="Finished Passive Aggressive v2 with titanium wedge and integrated bottom cover">
+            <figcaption>Finished robot with titanium wedge</figcaption>
+          </figure>
+          <figure>
+            <img src="images/pa-v2-fusion360-packaging.jpg" alt="Fusion 360 cutaway render showing full internal component packaging">
+            <figcaption>Fusion 360 render with internals to optimize space</figcaption>
+          </figure>
+          <figure>
+            <img src="images/pa-v2-cnc-milling.jpg" alt="CNC router mid-cut on the UHMW unibody chassis for Passive Aggressive v2">
+            <figcaption>CNC router mid-cut on the UHMW unibody chassis</figcaption>
+          </figure>
+          <figure>
+            <img src="images/pa-v2-drum-weapon-parts.jpg" alt="Disassembled drum weapon parts: aluminum drum, rotor, and bearings">
+            <figcaption>Drum weapon parts — aluminum drum, rotor, and bearings</figcaption>
+          </figure>
+          <figure>
+            <img src="images/pa-v2-internals-clean.jpg" alt="Passive Aggressive v2 with top cover removed showing space-efficient internal packaging">
+            <figcaption>Top cover removed — shows just how tightly the internals were packaged</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+
+    <div class="gallery-label">Also Built</div>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <div class="photo-slot" style="background:none; border:1px dashed var(--line-bright); padding:0;">
+          <img src="images/bugbite-pa-v2-trophies.png" alt="Bug Bite fairyweight with its 1st place trophy" style="width:100%; height:100%; object-fit:cover;">
+        </div>
+        <h4>Fairyweight "Bug Bite" — 150g</h4>
+        <p>Altoids-tin chassis, 9g servo flipper. Ranked top 3 nationally; won 1st place at this event.</p>
+      </div>
+      <div class="gallery-item">
+        <div class="photo-slot" style="background:none; border:1px dashed var(--line-bright); padding:0;">
+          <img src="images/demo-ant.jpg" alt="Demo antweight, repurposed Phantom v3 chassis with weapon removed and steel wedge attachment" style="width:100%; height:100%; object-fit:cover;">
+        </div>
+        <h4>Demo Antweight — 1lb</h4>
+        <p>A repurposed Phantom v3 chassis — weapon removed and replaced with a large steel wedge — used for educational demonstrations and letting other people drive.</p>
+      </div>
+      <div class="gallery-item">
+        <div class="photo-slot" style="background:none; border:1px dashed var(--line-bright); padding:0;">
+          <img src="images/colonel-klucks-v1.png" alt="Colonel Klucks v1, welded steel wedge chassis with rubber chicken mascot" style="width:100%; height:100%; object-fit:cover;">
+        </div>
+        <h4>Colonel Klucks v1 — 3lb</h4>
+        <p>Welded steel wedge chassis, no active weapon — pure passive defense paired with aggressive driving.</p>
+      </div>
+      <div class="gallery-item">
+        <div class="photo-slot" style="background:none; border:1px dashed var(--line-bright); padding:0;">
+          <img src="images/colonel-klucks-v2.png" alt="Colonel Klucks v2, titanium hexagonal wedge chassis with overhead beater-bar weapon and rubber chicken mascot" style="width:100%; height:100%; object-fit:cover;">
+        </div>
+        <h4>Colonel Klucks v2 — 3lb</h4>
+        <p>Rebuilt in welded titanium with a hexagonal wedge geometry and an added overhead beater-bar weapon — active offense plus defensive wedge shape. Drivetrain upgraded significantly to improve speed and handling.</p>
+      </div>
+      <div class="gallery-item">
+        <div class="photo-slot" style="background:none; border:1px dashed var(--line-bright); padding:0;">
+          <img src="images/hobbyweight-rake.jpg" alt="Hobbyweight robot showing the garden rake head weapon side" style="width:100%; height:100%; object-fit:cover;">
+        </div>
+        <h4>Hobbyweight — 12lb</h4>
+        <p>Quick fun build for a one-off tournament that didn't allow active weapons — a large pusher robot with a garden-rake head on one side and a wedge on the other.</p>
+      </div>
+    </div>
+
+    <div class="gallery-label">220lb Heavyweight Concept — Design Detail</div>
+    <p style="font-size:13.5px; color:var(--text-dim); margin:-8px 0 20px; max-width:640px;">
+      Rendered concept designed for a BattleBots TV show application, scaled up from the Colonel Klucks platform. Never built — application resulted in being called in as an alternate contestant.
+    </p>
+    <div class="photo-strip-wrap" style="border-top: 1px solid var(--line);">
+      <div class="photo-strip-label">Drivetrain hardware, concept sketch, and CAD</div>
+      <div class="photo-strip">
+        <figure>
+          <img src="images/hw220-concept-sketch.jpg" alt="Hand-drawn concept sketch with internal packaging layout, wiring diagram, and bill of materials">
+          <figcaption>Concept sketch — internal packaging layout, rough wiring diagram, and a bill of materials for the electronics (~$950)</figcaption>
+        </figure>
+        <figure>
+          <img src="images/hw220-cad-exterior.png" alt="3D CAD render of the 220lb heavyweight exterior, based on the concept sketch">
+          <figcaption>3D CAD exterior, modeled based off of the concept sketch</figcaption>
+        </figure>
+        <figure>
+          <img src="images/hw220-cad-internal.jpg" alt="3D CAD render showing internal component packaging for the 220lb heavyweight">
+          <figcaption>3D CAD internal packaging view — drivetrain, wheels, and weapon layout</figcaption>
+        </figure>
+        <figure>
+          <img src="images/hw220-drivetrain-parts.jpg" alt="Drive motors and chain-driven wheel modules sourced for the 220lb concept">
+          <figcaption>Drive motors and chain-driven wheel modules sourced for the build</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOVERCRAFT ============ -->
+<section id="hovercraft">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-num">05</span>
+      <h2 class="section-title">RC Hovercraft</h2>
+    </div>
+    
+
+    <p class="lede">
+      Built largely from spare parts accumulated from combat-robot builds, inspired by an
+      interest in RC quadcopters and cars.
+      Three versions, each resolving a specific handling or safety issue from the last.
+    </p>
+
+    <div class="version-card">
+      <div class="version-card-photo">
+        <img src="images/hovercraft-v1.jpg" alt="Hovercraft V1 showing the ducted downward-facing lift propeller, rudder, and electronics">
+      </div>
+      <div class="version-card-body">
+        <span class="version-card-id">V1</span>
+        <p class="version-card-change">Foam-core poster board hull. One propeller pushing air downward for lift (the air cushion), a second rear-facing propeller providing thrust over a rudder for steering. Motors mounted to quickly fabricated plastic beams, hot-glued to the body. Electronics placed near the front, away from the props, to reduce fire risk from a prop strike. Also prototyped a tarp-material skirt for a more traditional hovercraft look.</p>
+        <p class="version-card-why"><strong>Why:</strong> Scrap-parts proof of concept. The tarp skirt was removed after testing showed it made the craft noticeably less controllable — the downward prop stayed, the enclosed air cushion didn't.</p>
+      </div>
+    </div>
+
+    <div class="version-card">
+      <div class="version-card-photo">
+        <img src="images/hovercraft-v2.jpg" alt="Hovercraft V2 with corrugated plastic hull and upgraded propellers">
+      </div>
+      <div class="version-card-body">
+        <span class="version-card-id">V2</span>
+        <p class="version-card-change">Upgraded propellers. Hull material switched from poster board to corrugated plastic for durability and lower friction. Electronics relocated to the rear with a makeshift plastic battery cover.</p>
+        <p class="version-card-why"><strong>Why:</strong> Rear placement was a deliberate weight-balance experiment to improve handling — it worked, but reintroduced prop-strike fire risk that the cover only partly addressed.</p>
+      </div>
+    </div>
+
+    <div class="version-card">
+      <div class="version-card-photo">
+        <img src="images/hovercraft-v3.jpg" alt="Hovercraft V3 with larger rudder, front-mounted electronics, and cleaner wire management">
+      </div>
+      <div class="version-card-body">
+        <span class="version-card-id">V3 (final)</span>
+        <p class="version-card-change">Battery relocated back to the front. Aerodynamic front cover added to enclose the electronics and clean up the look. Larger rudder for more steering authority, improved wire management. Experimental servo-actuated "handbrake" — a small arm with a hot-glue friction pad.</p>
+        <p class="version-card-why"><strong>Why:</strong> Resolved the V2 fire-risk trade-off for good. The handbrake was a low-cost experiment that turned out to have little practical effect, but cost nothing to leave in.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MORE PROJECTS ============ -->
+<section id="more">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-num">06</span>
+      <h2 class="section-title">Additional Projects</h2>
+    </div>
+    <div class="section-sub">SMALLER BUILDS, ONE-OFFS, AND WORK IN PROGRESS</div>
+
+    <div class="misc-grid">
+      <div class="misc-card">
+        <div class="tag-row"><span class="pill">Electronics</span><span class="pill">Embedded</span></div>
+        <h4>Arduino / Raspberry Pi Projects</h4>
+        <p>A variety of smaller embedded electronics builds using Arduino and Raspberry Pi platforms.</p>
+      </div>
+      <div class="misc-card">
+        <div class="tag-row"><span class="pill">3D Printing</span><span class="pill">Electronics</span></div>
+        <h4>CoreXY RepRap 3D Printer Build</h4>
+        <p>From-scratch build of a CoreXY-style RepRap 3D printer.</p>
+        <div class="photo-strip" style="margin-top:12px; grid-template-columns: 1fr;">
+          <figure>
+            <img src="images/reprap-corexy-printer.jpg" alt="Completed CoreXY RepRap 3D printer with wooden enclosure, dual stepper motors, and finished prints on the bed">
+          </figure>
+        </div>
+      </div>
+      <div class="misc-card">
+        <div class="tag-row"><span class="pill">CAD</span><span class="pill">Mechanism Design</span></div>
+        <h4>Planetary Gearbox — SolidWorks Animation</h4>
+        <p>Modeled and animated a full planetary gearbox transmission in SolidWorks for a class assignment — gear train design and motion study.</p>
+        <video controls muted loop playsinline preload="metadata" poster="images/gearbox-poster.jpg" style="width:100%; margin-top:12px; border:1px solid var(--line-bright); display:block;">
+          <source src="videos/planetary-gearbox-animation.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="misc-card">
+        <div class="tag-row"><span class="pill">CNC</span><span class="pill">Small Business</span></div>
+        <h4>CNC-Milled Fidget Spinners</h4>
+        <p>Designed and CNC-milled fidget spinners in-house and sold them — manufacturing plus the business side: pricing, production runs, and fulfillment.</p>
+        <div class="photo-strip" style="margin-top:12px;">
+          <figure>
+            <img src="images/fidget-bearings-closeup.jpg" alt="Close-up of a finished tri-spinner with bearings installed">
+            <figcaption>Finished fidget spinner</figcaption>
+          </figure>
+          <figure>
+            <img src="images/fidget-cnc-pattern.jpg" alt="CNC router cutting a chain-link pattern fidget spinner design">
+            <figcaption>CNC-cut sheet for producing a large batch of product</figcaption>
+          </figure>
+          <figure>
+            <img src="images/fidget-batch-production.jpg" alt="Batch of finished fidget spinner bodies with bearings">
+            <figcaption>Bearing installation</figcaption>
+          </figure>
+        </div>
+      </div>
+      <div class="misc-card">
+        <div class="tag-row"><span class="pill">RC</span><span class="pill">Electronics</span></div>
+        <h4>FPV Drone Conversion</h4>
+        <p>Modified an off-the-shelf toy drone to add an onboard camera for recording flights.</p>
+        <div class="photo-strip" style="margin-top:12px; grid-template-columns: 1fr;">
+          <figure>
+            <img src="images/fpv-drone-conversion.jpg" alt="Toy drone converted with a camera module mounted on top">
+            <figcaption>FPV camera mounted on a converted toy quadcopter</figcaption>
+          </figure>
+        </div>
+      </div>
+      <div class="misc-card">
+        <div class="tag-row"><span class="pill">CAD</span><span class="pill">3D Printing</span><span class="pill">Small Business</span></div>
+        <h4>3D-Printed VR Headset</h4>
+        <p>Designed and 3D printed VR headset enclosures in Google SketchUp, produced and sold as a small run. The final design featured an elastic head strap, foam nose pads, and a foam cushion for comfort, refined through iterating on lens placement and phone mounting fit.</p>
+        <div class="photo-strip" style="margin-top:12px;">
+          <figure>
+            <img src="images/vr-headset-final.jpg" alt="Finished 3D printed VR headset in black and green with foam strap">
+            <figcaption>Finished headset — black and green, foam head strap</figcaption>
+          </figure>
+          <figure>
+            <img src="images/vr-headset-printing.jpg" alt="VR headset body mid-print on a MakerFarm 3D printer">
+            <figcaption>Headset body mid-print</figcaption>
+          </figure>
+          <figure>
+            <img src="images/vr-headset-painted-parts.jpg" alt="Painted red VR headset shell parts">
+            <figcaption>Painted shell parts</figcaption>
+          </figure>
+        </div>
+      </div>
+      <div class="misc-card">
+        <div class="tag-row"><span class="pill">CAD</span><span class="pill">3D Printing</span><span class="pill">Manufacturing</span></div>
+        <h4>Office-Materials Crossbow</h4>
+        <p>Engineering class project: design a launcher that could shoot a dart as far and as accurately as possible, built entirely from office supplies. Available materials were limited and instructor-provided, and 3D-printed parts were capped by a class-wide limit on total printed plastic — a constraint-driven exercise in mechanism design.</p>
+        <div class="photo-strip" style="margin-top:12px;">
+          <figure>
+            <img src="images/crossbow-onshape-cad.png" alt="Crossbow designed in Onshape CAD">
+            <figcaption>Designed fully in Onshape</figcaption>
+          </figure>
+          <figure>
+            <img src="images/crossbow-final.jpg" alt="Finished office-materials crossbow">
+            <figcaption>Finished crossbow</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="hazard-rule"></div>
+
+<!-- ============ EDUCATION ============ -->
+<section id="education">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-num">07</span>
+      <h2 class="section-title">Education</h2>
+    </div>
+    <div class="section-sub">DEGREE &amp; CERTIFICATIONS</div>
+
+    <div class="edu-card">
+      <div class="edu-school">University of Tennessee, Knoxville</div>
+      <div class="edu-degree">B.S. in Mechanical Engineering</div>
+      <div class="edu-date">May 2023</div>
+      <ul>
+        <li>Graduated Magna Cum Laude (3.66 GPA)</li>
+        <li>Vice President, ASME Student Chapter</li>
+      </ul>
+      <div class="cert-row">
+        <strong>Certified SolidWorks Associate in Mechanical Design (CSWA)</strong> — Nov 2022
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="hazard-rule"></div>
+
+<footer>
+  <div class="wrap">
+    <div class="name">Azeem Husain</div>
+    <div class="contact">azeem.husain@hotmail.com &nbsp;·&nbsp; 615-838-2817 &nbsp;·&nbsp; <a href="https://www.linkedin.com/in/azeem-husain-5a4014206" style="color:var(--accent); text-decoration:none;">linkedin.com/in/azeem-husain</a></div>
+    <div class="note">Portfolio last revised — July 2026</div>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox">
+  <span class="lightbox-close">Close ✕</span>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<script>
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+
+  document.querySelectorAll('.photo-strip img, .gallery-item img, .version-card-photo img').forEach(img => {
+    img.addEventListener('click', () => {
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt;
+      lightbox.classList.add('active');
+    });
+  });
+
+  lightbox.addEventListener('click', () => {
+    lightbox.classList.remove('active');
+    lightboxImg.src = '';
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      lightbox.classList.remove('active');
+      lightboxImg.src = '';
+    }
+  });
+</script>
+
+</body>
+</html>
